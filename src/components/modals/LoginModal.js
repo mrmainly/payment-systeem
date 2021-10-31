@@ -2,8 +2,10 @@ import React, { useContext, } from 'react'
 import { Dialog, Typography, Box, MenuItem } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { useForm } from 'react-hook-form'
+import { useHistory } from 'react-router-dom'
 
 import { DispatchContext, StateContext } from '../../store'
+import API from '../../api'
 import { Form } from '../customElements/Form'
 import { Input } from '../customElements/Input'
 import ButtonCustom from '../customElements/ButtonCustom'
@@ -33,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
 const LoginModal = () => {
     const state = useContext(StateContext)
     const dispatch = useContext(DispatchContext)
+    const router = useHistory()
     const classes = useStyles()
     const hundleClose = () => {
         dispatch({ type: 'authModal', payload: { login: false } })
@@ -41,7 +44,7 @@ const LoginModal = () => {
         mode: "onBlur"
     })
     const onSubmit = (data) => {
-        console.log('asdasd', data)
+        API.getToken({ ...data }, dispatch, router)
     }
     return (
         <Dialog aria-labelledby="simple-dialog-title" open={state.authModal.login} onClose={hundleClose}>

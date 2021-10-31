@@ -113,7 +113,6 @@ const HeaderSlogo = () => {
     const loginBlock = () => {
         return (
             <Box>
-
                 <MenuItem className={classes.login} onClick={() => { dispatch({ type: 'authModal', payload: { register: true } }) }}>
                     <img src={'/img/fi_user.png'} style={{ marginRight: 10 }} />
                     <Typography>Войти в аккаунт</Typography>

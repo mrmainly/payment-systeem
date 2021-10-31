@@ -11,6 +11,8 @@ import { stateReducer } from '../../reducer/mainReducer'
 import { DispatchContext, StateContext, defaultStore } from '../../store/index'
 import UserSideBar from './UserSideBar'
 
+import Notification from '../customElements/Notification'
+
 const useStyles = makeStyles(() => ({
     root: {
         display: 'flex',
@@ -60,6 +62,7 @@ const Layout = ({ children }) => {
     return (
         <DispatchContext.Provider value={dispatch}>
             <StateContext.Provider value={state}>
+                <Notification />
                 <div style={{ overflow: 'hidden' }}>
                     <RegisterModal />
                     <LoginModal />

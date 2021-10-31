@@ -14,9 +14,10 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 import { useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom'
+import cookie from 'js-cookie'
 
 import themeMain from '../../theme'
-import { DispatchContext } from "../../store";
+import { DispatchContext, StateContext } from "../../store";
 
 const useStyles = makeStyles((theme) => ({
     header: {
@@ -144,7 +145,7 @@ const useStyles = makeStyles((theme) => ({
         },
         marginRight: 15
     },
-    img: {
+    imgBackground: {
         width: '100%',
         marginBottom: '-10px',
         height: 230,
@@ -175,6 +176,7 @@ export default function Header() {
     const classes = useStyles();
     const router = useHistory()
     const dispatch = useContext(DispatchContext)
+    const stateReducer = useContext(StateContext)
 
     const [state, setState] = useState({
         mobileView: false,
@@ -220,7 +222,7 @@ export default function Header() {
                             </Box>
                         </Box>
                         <Box>
-                            <img src={'/img/Frame20.png'} className={classes.img} />
+                            <img src={'/img/Frame20.png'} className={classes.imgBackground} />
                         </Box>
                         <Box className={classes.headerBlock}>
                             <Box style={{ display: 'flex', alignItems: 'center' }}>
@@ -284,15 +286,16 @@ export default function Header() {
     const loginBlock = () => {
         return (
             <Box>
-                <MenuItem className={classes.login} onClick={() => { dispatch({ type: 'authModal', payload: { register: true } }) }}>
-                    <img src={'/img/fi_user.png'} style={{ marginRight: 10 }} />
-                    <Typography>Войти в аккаунт</Typography>
-                </MenuItem>
-
-                {/* <MenuItem className={classes.login}>
-                    <img src={'/img/fi_user.png'} style={{ marginRight: 10 }} />
-                    <Link to="/form-profile" style={{ textDecoration: 'none', color: 'white' }}>grummsed.kolesov@gmail.com</Link>
-                </MenuItem> */}
+                {cookie.get('jwttoken') ?
+                    <MenuItem className={classes.login}>
+                        <img src={'/img/fi_user.png'} style={{ marginRight: 10 }} />
+                        <Link to="/form-profile" style={{ textDecoration: 'none', color: 'white' }}>Профиль</Link>
+                    </MenuItem> :
+                    <MenuItem className={classes.login} onClick={() => { dispatch({ type: 'authModal', payload: { register: true } }) }}>
+                        <img src={'/img/fi_user.png'} style={{ marginRight: 10 }} />
+                        <Typography>Войти в аккаунт</Typography>
+                    </MenuItem>
+                }
             </Box>
         )
     }
@@ -321,7 +324,7 @@ export default function Header() {
                         <Typography variant="h6" style={{ marginLeft: 10 }}>Платные услуги</Typography>
                     </Box>
                 </Box>
-                <Box>
+                <Box style={{ display: 'flex' }}>
                     <img src={'img/Vec.png'} className={classes.img} style={{ marginRight: 20 }} />
                     <img src={'img/Vect.png'} className={classes.img} />
                 </Box>
