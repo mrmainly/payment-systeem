@@ -13,11 +13,14 @@ import UserSideBar from './UserSideBar'
 
 import Notification from '../customElements/Notification'
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
         flexDirection: 'row',
-        alignItems: 'start'
+        alignItems: 'start',
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column'
+        },
     },
     content: {
         minHeight: 600,
@@ -55,7 +58,7 @@ const Layout = ({ children }) => {
     const changeTitle = (pathname) => {
         switch (pathname) {
             case '/form-profile': return 'Личная информация';
-            case '/phone-mail-profile': return 'Телефон и электронная почта';
+            case '/phone-mail-profile': return 'Телефон';
             case '/change-password-profile': return 'Изменить пароль';
         }
     }

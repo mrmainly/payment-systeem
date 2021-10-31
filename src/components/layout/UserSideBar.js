@@ -3,7 +3,9 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Box, MenuItem } from '@material-ui/core'
 import { Link, useHistory } from 'react-router-dom'
 
-const useStyles = makeStyles(() => ({
+import cookie from 'js-cookie'
+
+const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
         flexDirection: 'column',
@@ -11,7 +13,10 @@ const useStyles = makeStyles(() => ({
         paddingLeft: 20,
         paddingRight: 20,
         marginRight: 20,
-        marginTop: '-10px'
+        marginTop: '-10px',
+        [theme.breakpoints.down('sm')]: {
+            display: 'none'
+        },
     },
 }))
 
@@ -23,22 +28,20 @@ const UserSideBar = () => {
             link: '/form-profile',
             label: 'Личная информация',
         },
-        {
-            link: '/phone-mail-profile',
-            label: 'Телефон и электронная почта',
-        },
-        {
-            link: '/change-password-profile',
-            label: 'Изменить пароль',
-        }
     ]
     return (
         <Box className={classes.root}>
             {linkArray.map((item, index) => (
-                <Link to={item.link} style={{ textDecoration: 'none', color: 'black', width: '100%', marginTop: 10 }}>
-                    <MenuItem key={index} className={classes.menuItemStyles} >{item.label}</MenuItem>
+                <Link key={index} to={item.link} style={{ textDecoration: 'none', color: 'black', width: '100%', marginTop: 10 }}>
+                    <MenuItem className={classes.menuItemStyles} >{item.label}</MenuItem>
                 </Link>
             ))}
+            <Box style={{ textDecoration: 'none', color: 'black', width: '100%', marginTop: 10 }}>
+                <MenuItem className={classes.menuItemStyles} onClick={() => {
+                    cookie.remove('jwttoken')
+                    history.push('/')
+                }}>Выйти</MenuItem>
+            </Box>
         </Box>
     )
 }

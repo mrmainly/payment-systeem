@@ -8,8 +8,6 @@ const useStyles = makeStyles((theme) => ({
         border: 0,
         height: 40,
         padding: '0 20px',
-        borderTopLeftRadius: 15,
-        borderEndEndRadius: 15,
         '&:focus': {
             outline: "none",
         },

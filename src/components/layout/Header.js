@@ -41,17 +41,9 @@ const useStyles = makeStyles((theme) => ({
     },
     link_Style: {
         color: 'white',
+        textDecoration: 'none',
         [theme.breakpoints.down('md')]: {
-            marginLeft: 0,
-            fontSize: 18,
-            marginTop: 10,
-            marginBottom: 10,
-            borderRadius: 4,
-            width: '100%',
-            color: 'black',
-            background: 'white',
-            boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.25)',
-            width: 200,
+            color: 'black'
         },
     },
     img: {
@@ -289,9 +281,9 @@ export default function Header() {
                 {cookie.get('jwttoken') ?
                     <MenuItem className={classes.login}>
                         <img src={'/img/fi_user.png'} style={{ marginRight: 10 }} />
-                        <Link to="/form-profile" style={{ textDecoration: 'none', color: 'white' }}>Профиль</Link>
+                        <Link to="/form-profile" className={classes.link_Style}>Профиль</Link>
                     </MenuItem> :
-                    <MenuItem className={classes.login} onClick={() => { dispatch({ type: 'authModal', payload: { register: true } }) }}>
+                    <MenuItem className={classes.login} onClick={() => { dispatch({ type: 'authModal', payload: { login: true } }) }}>
                         <img src={'/img/fi_user.png'} style={{ marginRight: 10 }} />
                         <Typography>Войти в аккаунт</Typography>
                     </MenuItem>
@@ -344,17 +336,14 @@ export default function Header() {
     const getDrawerChoices = () => {
         return (
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+                {headersData.map((item, index) => (
+                    <MenuItem key={index} className={classes.login} style={{ borderRight: `${item.showLine ? '2px solid white' : '0px solid white'}` }}>
+                        <Link to={item.link} className={classes.link_Style}>
+                            {item.title}
+                        </Link>
+                    </MenuItem>
+                ))}
                 {loginBlock()}
-                <Link>
-                    <MenuItem className={classes.link_Style}>
-                        Услуги
-                    </MenuItem>
-                </Link>
-                <Link>
-                    <MenuItem className={classes.link_Style}>
-                        Вопрос/ответ
-                    </MenuItem>
-                </Link>
             </div>
         )
     };

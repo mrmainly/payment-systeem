@@ -9,9 +9,7 @@ const useStyles = makeStyles((theme) => ({
         minHeight: 100,
         paddingTop: 20,
         paddingBottom: 20,
-        [theme.breakpoints.down('sm')]: {
-            display: 'none'
-        },
+
     },
     gridItem: {
         display: 'flex',
@@ -27,7 +25,8 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'space-between',
         [theme.breakpoints.down('sm')]: {
-            justifyContent: 'center'
+            justifyContent: 'center',
+            display: 'none'
         },
     }
 }))

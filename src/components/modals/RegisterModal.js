@@ -7,6 +7,7 @@ import { DispatchContext, StateContext } from '../../store'
 import { Form } from '../customElements/Form'
 import { Input } from '../customElements/Input'
 import ButtonCustom from '../customElements/ButtonCustom'
+import API from '../../api'
 
 const useStyles = makeStyles((theme) => ({
     DialogContent: {
@@ -39,8 +40,12 @@ const RegisterModal = () => {
     const { register, handleSubmit, errors } = useForm({
         mode: "onBlur"
     })
-    const onSubmit = (data) => {
-        console.log('asdasd', data)
+    const onSubmit = ({ password, firstName, secondName, patronymic, email, phone, forgotPassword }) => {
+        if (forgotPassword == password) {
+            API.register({ password, firstName, secondName, patronymic, email, phone }, dispatch)
+        } else {
+            dispatch({ type: 'notification', payload: { status: 'error', active: true, text: 'пароль должен состоять минимум из 8 символов' } })
+        }
     }
     return (
         <Dialog aria-labelledby="simple-dialog-title" open={state.authModal.register} onClose={hundleClose}>
@@ -51,8 +56,10 @@ const RegisterModal = () => {
                     <Input {...register('secondName')} id="secondName" type="text" label="Фамилия" />
                     <Input {...register('firstName')} id="firstName" type="text" label="Имя" />
                     <Input {...register('patronymic')} id="patronymic" type="text" label="Отчество" />
-                    <Input {...register('mail')} id="mail" type="text" label="Электронная почта" />
+                    <Input {...register('email')} id="mail" type="text" label="Электронная почта" />
                     <Input {...register('phone')} id="phone" type="number" label="Номер телефона" />
+                    <Input {...register('password')} id="password" type="password" label="Пароль" />
+                    <Input {...register('forgotPassword')} id="forgotPassword" type="password" label="Проверка пароля" />
                     <Box style={{ marginTop: 10, marginBottom: 10 }}>
                         <ButtonCustom>Далее</ButtonCustom>
                     </Box>

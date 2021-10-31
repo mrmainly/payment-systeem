@@ -30,7 +30,7 @@ const PhoneMailProfile = () => {
             <Form>
                 <Box className={classes.inputBox}>
                     <Input {...register('phone')} id="secondName" type="number" label="Ваш номер телефона" />
-                    <Input {...register('mail')} id="secondName" type="number" label="Электронная почта" />
+                    {/* <Input {...register('mail')} id="secondName" type="number" label="Электронная почта" /> */}
                 </Box>
                 <Box style={{ marginTop: 20 }}>
                     <ButtonCustom>Сохранить</ButtonCustom>

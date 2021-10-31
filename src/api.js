@@ -37,6 +37,12 @@ class API {
             dispatch({ type: 'login', payload: { mail: res.data.email } })
         }).catch(() => { dispatch({ type: 'notification', payload: { status: 'error', active: true, text: 'такокго пользователя не существует' } }) })
     }
+    register(data, dispatch) {
+        api('api/v1/user/registration/').post(null, data).then(res => {
+            console.log(res)
+            dispatch({ type: 'authModal', payload: { register: false, login: true } })
+        }).catch((error) => console.log(error))
+    }
 }
 
 export default new API()

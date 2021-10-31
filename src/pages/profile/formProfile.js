@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Box } from '@material-ui/core'
+import { Box, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -15,6 +15,13 @@ const useStyles = makeStyles((theme) => ({
         width: 350,
         [theme.breakpoints.down('sm')]: {
             width: '100%'
+        },
+    },
+    buttonStyle: {
+        marginTop: 20,
+        display: 'none',
+        [theme.breakpoints.down('sm')]: {
+            display: 'block'
         },
     }
 }))
@@ -41,10 +48,14 @@ const FormProfile = () => {
                     <Input {...register('secondName')} id="secondName" type="text" label="Фамилия" error={!!errors.secondName} helperText={errors?.secondName?.message} />
                     <Input {...register('firstName')} id="firstName" type="text" label="Имя" error={!!errors.firstName} helperText={errors?.firstName?.message} />
                     <Input {...register('patronymic')} id="patronymic" type="text" label="Отчество" error={!!errors.patronymic} helperText={errors?.patronymic?.message} />
+                    <Input {...register('phone')} id="secondName" type="number" label="Ваш номер телефона" />
                 </Box>
                 <Box style={{ marginTop: 20 }}>
                     <ButtonCustom>Сохранить</ButtonCustom>
                 </Box>
+
+                <Button variant="contained" color="primary" className={classes.buttonStyle}>Выйти</Button>
+
             </Form>
         </Layout>
     )
