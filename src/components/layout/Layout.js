@@ -5,13 +5,10 @@ import { useHistory } from 'react-router-dom'
 
 import Header from './Header'
 import Footer from './Footer'
-import RegisterModal from '../modals/RegisterModal'
-import LoginModal from '../modals/LoginModal'
 import { stateReducer } from '../../reducer/mainReducer'
 import { DispatchContext, StateContext, defaultStore } from '../../store/index'
-import UserSideBar from './UserSideBar'
 
-import Notification from '../customElements/Notification'
+import { RegisterModal, LoginModal, UserSideBar, Notification } from '../index'
 
 const useStyles = makeStyles(theme => ({
     root: {

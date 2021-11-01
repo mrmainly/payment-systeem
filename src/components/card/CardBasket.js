@@ -60,7 +60,7 @@ export default function CardBasket(props) {
                     <Box className={classes.priceBlock}>
                         <Typography>Цена услуги:</Typography>&nbsp;
                         <Typography style={{ fontWeight: 'bold' }}>{props.price} ₽</Typography>
-                        <Typography>Дата и время:</Typography>&nbsp; 
+                        <Typography>Дата и время:</Typography>&nbsp;
                         <Typography style={{ fontWeight: 'bold' }}>{props.price} ₽</Typography>
                     </Box>
                     <Box className={classes.actionBlock}>

@@ -2,10 +2,7 @@ import React from 'react'
 import { Box, Typography, TextareaAutosize, TextField } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
-import Layout from '../../components/layout/Layout'
-import { Form } from '../../components/customElements/Form'
-import { Input } from '../../components/customElements/Input'
-import ButtonCustom from '../../components/customElements/ButtonCustom'
+import { Button, Layout, Form, Input } from '../../components'
 
 const useStyles = makeStyles((theme) => ({
     titleBox: {
@@ -53,7 +50,7 @@ const TechSup = () => {
                             color='primary'
                         />
                         <Box style={{ marginTop: 20, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                            <ButtonCustom>Отправить сообщение</ButtonCustom>
+                            <Button>Отправить сообщение</Button>
                         </Box>
                     </Form>
                 </Box>

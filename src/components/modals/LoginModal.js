@@ -6,9 +6,7 @@ import { useHistory } from 'react-router-dom'
 
 import { DispatchContext, StateContext } from '../../store'
 import API from '../../api'
-import { Form } from '../customElements/Form'
-import { Input } from '../customElements/Input'
-import ButtonCustom from '../customElements/ButtonCustom'
+import { Form, Input, Button } from '../index'
 
 const useStyles = makeStyles((theme) => ({
     DialogContent: {
@@ -55,7 +53,7 @@ const LoginModal = () => {
                     <Input {...register('mail')} id="secondName" type="text" label="Электронная почта" />
                     <Input {...register('password')} id="firstName" type="text" label="Пароль" />
                     <Box style={{ marginTop: 10, marginBottom: 10 }}>
-                        <ButtonCustom>Далее</ButtonCustom>
+                        <Button>Далее</Button>
                     </Box>
                 </Form>
                 <MenuItem style={{ width: 'max-content', margin: '0 auto' }}>Забыли пароль</MenuItem>

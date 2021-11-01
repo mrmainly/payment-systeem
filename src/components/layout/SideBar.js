@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
-import { Box, MenuItem, Typography } from '@material-ui/core'
+import { Box, MenuItem, Typography, Menu } from '@material-ui/core'
+import { Link } from 'react-router-dom'
+
+import SideBarData from '../../JsonList/SideBarData'
 
 const useStyles = makeStyles(() => ({
     menuTitle: {
@@ -15,12 +18,19 @@ const useStyles = makeStyles(() => ({
         marginTop: 20
     },
     menuItemText: {
-        marginTop: 10
+        marginTop: 10,
     }
 }))
 
 const SideBar = () => {
     const classes = useStyles()
+    const [state, setState] = useState()
+    const setOpen = (values) => {
+        setState((prevData) => ({
+            ...prevData,
+            ...values
+        }))
+    }
     return (
         <Box>
             <Box>
@@ -40,11 +50,28 @@ const SideBar = () => {
                 <Box className={classes.menuTitle}>
                     <Typography variant="body1">Каталог услуг:</Typography>
                 </Box>
-                <Box className={classes.menuItemBox}>
-                    <MenuItem className={classes.menuItemText}>
-                        <Typography variant="body1" >Сначала дешевые</Typography>
-                    </MenuItem>
-                </Box>
+                {/* {SideBarData ? SideBarData().map((item, index) => (
+                    <Box key={index}>
+                        <MenuItem
+                            className={classes.menuItemText}
+                            aria-controls="simple-menu"
+                            aria-haspopup="true"
+                        >
+                            {item.title}
+                        </MenuItem>
+                        <Menu
+                            id="simple-menu"
+                            keepMounted
+                            open={item.open}
+                        >
+                            {item.menuItems.map((item, index) => (
+                                <MenuItem key={index}>
+                                    <Link to={item.link}>{item.label}</Link>
+                                </MenuItem>
+                            ))}
+                        </Menu>
+                    </Box>
+                )) : ''} */}
             </Box>
         </Box>
     )

@@ -4,7 +4,7 @@ import { Box } from '@material-ui/core'
 import Layout from '../../components/layout/Layout'
 import FaqScreen from './components/FaqScreen'
 
-const FaqPage = () => {
+const Faq = () => {
     return (
         <Layout>
             <FaqScreen />
@@ -12,4 +12,4 @@ const FaqPage = () => {
     )
 }
 
-export default FaqPage
+export default Faq

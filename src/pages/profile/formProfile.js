@@ -1,14 +1,11 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Box, Button } from '@material-ui/core'
+import { Box } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
-import Layout from '../../components/layout/Layout'
-import { Form } from '../../components/customElements/Form'
-import { Input } from '../../components/customElements/Input'
-import ButtonCustom from '../../components/customElements/ButtonCustom'
+import { Layout, Form, Input, Button } from '../../components'
 
 const useStyles = makeStyles((theme) => ({
     inputBox: {
@@ -51,12 +48,12 @@ const FormProfile = () => {
                     <Input {...register('phone')} id="secondName" type="number" label="Ваш номер телефона" />
                 </Box>
                 <Box style={{ marginTop: 20 }}>
-                    <ButtonCustom>Сохранить</ButtonCustom>
+                    <Button>Сохранить</Button>
                 </Box>
-
-                <Button variant="contained" color="primary" className={classes.buttonStyle}>Выйти</Button>
-
             </Form>
+            <Box className={classes.buttonStyle}>
+                <Button variant="contained" color="primary">Выйти</Button>
+            </Box>
         </Layout>
     )
 }

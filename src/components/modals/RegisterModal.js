@@ -4,10 +4,9 @@ import { makeStyles } from '@material-ui/core/styles'
 import { useForm } from 'react-hook-form'
 
 import { DispatchContext, StateContext } from '../../store'
-import { Form } from '../customElements/Form'
-import { Input } from '../customElements/Input'
-import ButtonCustom from '../customElements/ButtonCustom'
 import API from '../../api'
+
+import { Form, Input, Button } from '../index'
 
 const useStyles = makeStyles((theme) => ({
     DialogContent: {
@@ -61,7 +60,7 @@ const RegisterModal = () => {
                     <Input {...register('password')} id="password" type="password" label="Пароль" />
                     <Input {...register('forgotPassword')} id="forgotPassword" type="password" label="Проверка пароля" />
                     <Box style={{ marginTop: 10, marginBottom: 10 }}>
-                        <ButtonCustom>Далее</ButtonCustom>
+                        <Button>Далее</Button>
                     </Box>
                 </Form>
                 <Box style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

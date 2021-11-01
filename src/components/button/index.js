@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 const ButtonCustom = ({ props, children }) => {
     const classes = useStyles()
     return (
-        <Button type="submit" variant="contained" className={classes.btn} {...props} >
+        <Button type="submit" variant="contained" className={classes.btn} {...props}>
             {children}
         </Button>
     )

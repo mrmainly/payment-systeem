@@ -3,13 +3,14 @@ import { withRouter } from 'react-router-dom'
 import { Grid, Typography, Box } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
-import Layout from '../../components/layout/Layout'
+import { Layout } from '../../components'
+
 import MainInfo from './components/MainInfo'
 import MainContentCards from '../../constructor/MainContentCards'
-import CaruselService from '../../components/customElements/CaruselService'
 import Calendar from './components/Calendar'
 import PriceBlock from './components/PriceBlock'
 import InfoScreen from './components/InfoScreen'
+import CaruselService from '../../constructor/CaruselService'
 
 const useStyles = makeStyles((theme) => ({
     Box: {

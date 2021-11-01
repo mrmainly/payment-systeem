@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { Box } from '@material-ui/core'
 import Slider from 'react-slick'
 
-import CardCastom from './CardCustom'
-import { CardArray } from '../../JsonList/CardArray'
+import { CardCastom } from '../components'
+import { CardArray } from '../JsonList/CardArray'
 
 
 const CaruselService = () => {

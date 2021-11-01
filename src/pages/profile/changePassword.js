@@ -3,10 +3,7 @@ import { useForm } from 'react-hook-form'
 import { Box } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
-import Layout from '../../components/layout/Layout'
-import { Form } from '../../components/customElements/Form'
-import { Input } from '../../components/customElements/Input'
-import ButtonCustom from '../../components/customElements/ButtonCustom'
+import { Layout, Form, Input, Button } from '../../components'
 
 const useStyles = makeStyles((theme) => ({
     inputBox: {
@@ -33,7 +30,7 @@ const ChangePassword = () => {
                     <Input {...register('newPassword')} id="newPassword" type="text" label="Введите новый пароль" />
                 </Box>
                 <Box style={{ marginTop: 20 }}>
-                    <ButtonCustom>Сохранить</ButtonCustom>
+                    <Button>Сохранить</Button>
                 </Box>
             </Form>
         </Layout>

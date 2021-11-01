@@ -2,11 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Box } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-
-import Layout from '../../components/layout/Layout'
-import { Form } from '../../components/customElements/Form'
-import { Input } from '../../components/customElements/Input'
-import ButtonCustom from '../../components/customElements/ButtonCustom'
+import { Button, Layout, Form, Input } from '../../components'
 
 const useStyles = makeStyles((theme) => ({
     inputBox: {
@@ -29,11 +25,11 @@ const PhoneMailProfile = () => {
         <Layout>
             <Form>
                 <Box className={classes.inputBox}>
-                    <Input {...register('phone')} id="secondName" type="number" label="Ваш номер телефона" />
+
                     {/* <Input {...register('mail')} id="secondName" type="number" label="Электронная почта" /> */}
                 </Box>
                 <Box style={{ marginTop: 20 }}>
-                    <ButtonCustom>Сохранить</ButtonCustom>
+                    <Button>Сохранить</Button>
                 </Box>
             </Form>
         </Layout>

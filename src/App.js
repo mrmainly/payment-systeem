@@ -2,8 +2,8 @@ import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import HomePage from './pages/home/homePage'
-import FaqPage from './pages/faq/faqPage'
+import HomePage from './pages/home'
+import FaqPage from './pages/faq'
 import ServiceInside from "./pages/servicesInside";
 import PaymentSistem from './pages/profile/paymentSistem'
 import TechSup from './pages/profile/techSup'
