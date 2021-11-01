@@ -9,12 +9,14 @@ import {
     Box,
     Container,
     Typography,
-    TextField
+    InputBase,
+    fade
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom'
 import cookie from 'js-cookie'
+import SearchIcon from '@material-ui/icons/Search';
 
 import themeMain from '../../theme'
 import { DispatchContext, StateContext } from "../../store";
@@ -128,15 +130,6 @@ const useStyles = makeStyles((theme) => ({
             marginTop: 0
         },
     },
-    TextFieldStyle: {
-        width: 350,
-        backgroundColor: '#fff',
-        borderRadius: 5,
-        '&:focus': {
-            outline: "none",
-        },
-        marginRight: 15
-    },
     imgBackground: {
         width: '100%',
         marginBottom: '-10px',
@@ -156,12 +149,43 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         width: 300,
     },
-    leftBlock: {
-        display: 'flex'
+    search: {
+        position: 'relative',
+        borderRadius: theme.shape.borderRadius,
+        backgroundColor: fade(theme.palette.common.white, 0.15),
+        '&:hover': {
+            backgroundColor: fade(theme.palette.common.white, 0.25),
+        },
+        marginRight: theme.spacing(2),
+        marginLeft: 0,
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+            marginLeft: theme.spacing(3),
+            width: 'auto',
+        },
     },
-    rightBlock: {
-        display: 'flex'
-    }
+    searchIcon: {
+        padding: theme.spacing(0, 2),
+        height: '100%',
+        position: 'absolute',
+        pointerEvents: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    inputRoot: {
+        color: 'inherit',
+    },
+    inputInput: {
+        padding: theme.spacing(1, 1, 1, 0),
+        // vertical padding + font size from searchIcon
+        paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+        transition: theme.transitions.create('width'),
+        width: '100%',
+        [theme.breakpoints.up('md')]: {
+            width: '20ch',
+        },
+    },
 }));
 
 export default function Header() {
@@ -240,7 +264,7 @@ export default function Header() {
                 <Box className={classes.header_down}>
                     <Container >
                         <Box className={classes.down_block}>
-                            <Box className={classes.leftBlock}>
+                            <Box style={{ display: 'flex' }}>
                                 {headersData.map((item, index) => (
                                     <Link to={item.link} key={index} className={classes.link_Box}>
                                         <MenuItem className={classes.menuItemStyle} style={{ borderRight: `${item.showLine ? '2px solid white' : '0px solid white'}` }}>
@@ -248,18 +272,23 @@ export default function Header() {
                                         </MenuItem>
                                     </Link>
                                 ))}
-                                <Box style={{ marginLeft: 20 }}>
-                                    <TextField
-                                        size="small"
-                                        variant="outlined"
-                                        required
-                                        fullWidth
-                                        placeholder="Поиск"
-                                        className={classes.TextFieldStyle}
-                                    />
+                                <Box style={{ marginLeft: 20, marginTop: 3 }}>
+                                    <div className={classes.search}>
+                                        <div className={classes.searchIcon}>
+                                            <SearchIcon />
+                                        </div>
+                                        <InputBase
+                                            placeholder="Поиск манги"
+                                            classes={{
+                                                root: classes.inputRoot,
+                                                input: classes.inputInput,
+                                            }}
+                                            inputProps={{ 'aria-label': 'search' }}
+                                        />
+                                    </div>
                                 </Box>
                             </Box>
-                            <Box className={classes.rightBlock}>
+                            <Box style={{ display: 'flex' }}>
                                 <MenuItem style={{ display: 'flex', alignItems: 'center', marginLeft: 100 }} onClick={() => { router.push('/basket') }}>
                                     <img src={'/img/Frame61.png'} style={{ marginRight: 10, marginLeft: '-10px' }} />
                                     <Box>
@@ -299,7 +328,7 @@ export default function Header() {
 
         return (
             <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Box style={{ display: 'flex', }}>
+                <Box style={{ display: 'flex' }}>
                     <IconButton
                         {...{
                             edge: "start",
