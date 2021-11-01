@@ -16,10 +16,10 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const ButtonCustom = ({ props, children }) => {
+const ButtonCustom = ({ props, children, onClick }) => {
     const classes = useStyles()
     return (
-        <Button type="submit" variant="contained" className={classes.btn} {...props}>
+        <Button type="submit" variant="contained" className={classes.btn} {...props} onClick={onClick}>
             {children}
         </Button>
     )

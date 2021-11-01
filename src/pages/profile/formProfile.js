@@ -3,9 +3,12 @@ import { useForm } from 'react-hook-form'
 import { Box } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useHistory } from 'react-router-dom'
 import * as yup from 'yup'
 
 import { Layout, Form, Input, Button } from '../../components'
+import Cookies from 'js-cookie'
+import { RadioButtonUncheckedRounded } from '@material-ui/icons'
 
 const useStyles = makeStyles((theme) => ({
     inputBox: {
@@ -30,6 +33,7 @@ const schema = yup.object().shape({
 })
 
 const FormProfile = () => {
+    const history = useHistory()
     const classes = useStyles()
     const { register, handleSubmit, formState: { errors } } = useForm({
         mode: "onBlur",
@@ -52,7 +56,10 @@ const FormProfile = () => {
                 </Box>
             </Form>
             <Box className={classes.buttonStyle}>
-                <Button variant="contained" color="primary">Выйти</Button>
+                <Button variant="contained" color="primary" onClick={() => {
+                    Cookies.remove('jwttoken')
+                    history.push('/')
+                }}>Выйти</Button>
             </Box>
         </Layout>
     )
