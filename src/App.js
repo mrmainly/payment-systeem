@@ -1,6 +1,9 @@
+import React, { useState } from 'react'
+
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import 'react-pro-sidebar/dist/css/styles.css';
 
 import HomePage from './pages/home'
 import FaqPage from './pages/faq'

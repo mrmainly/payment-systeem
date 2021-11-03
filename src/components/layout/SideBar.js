@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
-import { Box, MenuItem, Typography, Menu } from '@material-ui/core'
-import { Link } from 'react-router-dom'
+import { Box, Typography, MenuItem } from '@material-ui/core'
+import {
+    SubMenu,
+} from 'react-pro-sidebar'
 
 import SideBarData from '../../JsonList/SideBarData'
 
@@ -19,18 +21,21 @@ const useStyles = makeStyles(() => ({
     },
     menuItemText: {
         marginTop: 10,
+    },
+    subMenuStyle: {
+        listStyleType: 'none',
+        padding: '5px 20px 5px',
+        cursor: 'pointer',
+        minHeight: 35
+    },
+    subMenu_item: {
+        marginLeft: '-15px',
     }
 }))
 
 const SideBar = () => {
     const classes = useStyles()
-    const [state, setState] = useState()
-    const setOpen = (values) => {
-        setState((prevData) => ({
-            ...prevData,
-            ...values
-        }))
-    }
+
     return (
         <Box>
             <Box>
@@ -50,28 +55,23 @@ const SideBar = () => {
                 <Box className={classes.menuTitle}>
                     <Typography variant="body1">Каталог услуг:</Typography>
                 </Box>
-                {/* {SideBarData ? SideBarData().map((item, index) => (
-                    <Box key={index}>
-                        <MenuItem
-                            className={classes.menuItemText}
-                            aria-controls="simple-menu"
-                            aria-haspopup="true"
-                        >
-                            {item.title}
-                        </MenuItem>
-                        <Menu
-                            id="simple-menu"
-                            keepMounted
-                            open={item.open}
+                <MenuItem className={classes.menuItemText}>
+                    <Typography variant="body1">Сначала дешевые</Typography>
+                </MenuItem>
+                {SideBarData ? SideBarData.map((item, index) => (
+                    <Box >
+                        <Box style={{ borderBottom: '0.1px solid rgba(0, 0, 0, 0.25)' }}></Box>
+                        <SubMenu
+                            className={classes.subMenuStyle}
+                            title={item.title}
+                            key={index}
                         >
                             {item.menuItems.map((item, index) => (
-                                <MenuItem key={index}>
-                                    <Link to={item.link}>{item.label}</Link>
-                                </MenuItem>
+                                <MenuItem key={index} className={classes.submenu_item}>- {item.label}</MenuItem>
                             ))}
-                        </Menu>
+                        </SubMenu>
                     </Box>
-                )) : ''} */}
+                )) : ''}
             </Box>
         </Box>
     )

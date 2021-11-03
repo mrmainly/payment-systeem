@@ -10,7 +10,8 @@ import {
     Container,
     Typography,
     InputBase,
-    fade
+    fade,
+    Badge
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { useHistory } from "react-router-dom";
@@ -175,6 +176,7 @@ const useStyles = makeStyles((theme) => ({
     },
     inputRoot: {
         color: 'inherit',
+        width: 325
     },
     inputInput: {
         padding: theme.spacing(1, 1, 1, 0),
@@ -290,7 +292,7 @@ export default function Header() {
                             </Box>
                             <Box style={{ display: 'flex' }}>
                                 <MenuItem style={{ display: 'flex', alignItems: 'center', marginLeft: 100 }} onClick={() => { router.push('/basket') }}>
-                                    <img src={'/img/Frame61.png'} style={{ marginRight: 10, marginLeft: '-10px' }} />
+                                    <img src={'/img/Frame61.png'} style={{ marginRight: 10, marginLeft: '-10px', }} />
                                     <Box>
                                         <Typography>Корзина</Typography>
                                     </Box>
