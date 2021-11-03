@@ -10,6 +10,7 @@ import Layout from './layout/Layout'
 import SideBar from './layout/SideBar'
 import SideBarBasket from './layout/SideBarBasket'
 import UserSideBar from './layout/UserSideBar'
+import ForgotModal from './modals/ForgotModal'
 
 export {
     Button,
@@ -23,5 +24,6 @@ export {
     Layout,
     UserSideBar,
     SideBarBasket,
-    SideBar
+    SideBar,
+    ForgotModal
 }

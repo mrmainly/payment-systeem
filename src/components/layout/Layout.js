@@ -8,7 +8,7 @@ import Footer from './Footer'
 import { stateReducer } from '../../reducer/mainReducer'
 import { DispatchContext, StateContext, defaultStore } from '../../store/index'
 
-import { RegisterModal, LoginModal, UserSideBar, Notification } from '../index'
+import { RegisterModal, LoginModal, UserSideBar, Notification, ForgotModal } from '../index'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -66,6 +66,7 @@ const Layout = ({ children }) => {
                 <div style={{ overflow: 'hidden' }}>
                     <RegisterModal />
                     <LoginModal />
+                    <ForgotModal />
                     <Header />
                     <Container style={{ minHeight: 700, paddingTop: 20, paddingBottom: 20 }}>
                         {changeShowSideBar() ?

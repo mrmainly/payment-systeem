@@ -39,8 +39,12 @@ class API {
     }
     register(data, dispatch) {
         api('api/v1/user/registration/').post(null, data).then(res => {
-            console.log(res)
-            dispatch({ type: 'authModal', payload: { register: false, login: true } })
+            dispatch({ type: 'authModal', payload: { register: false, login: false, forgot: true } })
+        }).catch((error) => console.log(error))
+    }
+    forgotPassword(data, dispatch) {
+        api('api/v1/user/registration/').post(null, data).then(res => {
+            dispatch({ type: 'authModal', payload: { register: false, login: true, forgot: false } })
         }).catch((error) => console.log(error))
     }
 }
