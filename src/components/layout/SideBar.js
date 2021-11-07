@@ -8,7 +8,7 @@ import {
 
 import SideBarData from '../../JsonList/SideBarData'
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
     menuTitle: {
         backgroundColor: 'rgba(68, 119, 146, 1)',
         color: '#fff',
@@ -24,12 +24,26 @@ const useStyles = makeStyles(() => ({
     },
     subMenuStyle: {
         listStyleType: 'none',
-        padding: '5px 20px 5px',
         cursor: 'pointer',
-        minHeight: 35
+        minHeight: 30,
+        marginTop: 10,
     },
     subMenu_item: {
         marginLeft: '-15px',
+    },
+    subMenuTitle: {
+        height: 35,
+        display: 'flex',
+        alignItems: 'center',
+        paddingLeft: 20,
+        '&:hover': {
+            background: "#f5f5f5",
+        },
+    },
+    main: {
+        [theme.breakpoints.down('md')]: {
+            marginBottom: 30
+        },
     }
 }))
 
@@ -37,7 +51,7 @@ const SideBar = () => {
     const classes = useStyles()
 
     return (
-        <Box>
+        <Box className={classes.main}>
             <Box>
                 <Box className={classes.menuTitle}>
                     <Typography variant="body1">Сортировка:</Typography>
@@ -55,22 +69,16 @@ const SideBar = () => {
                 <Box className={classes.menuTitle}>
                     <Typography variant="body1">Каталог услуг:</Typography>
                 </Box>
-                <MenuItem className={classes.menuItemText}>
-                    <Typography variant="body1">Сначала дешевые</Typography>
-                </MenuItem>
                 {SideBarData ? SideBarData.map((item, index) => (
-                    <Box >
-                        <Box style={{ borderBottom: '0.1px solid rgba(0, 0, 0, 0.25)' }}></Box>
-                        <SubMenu
-                            className={classes.subMenuStyle}
-                            title={item.title}
-                            key={index}
-                        >
-                            {item.menuItems.map((item, index) => (
-                                <MenuItem key={index} className={classes.submenu_item}>- {item.label}</MenuItem>
-                            ))}
-                        </SubMenu>
-                    </Box>
+                    <SubMenu
+                        className={classes.subMenuStyle}
+                        title={<div className={classes.subMenuTitle}>{item.title}</div>}
+                        key={index}
+                    >
+                        {item.menuItems.map((item, index) => (
+                            <MenuItem key={index} className={classes.submenu_item}>- {item.label}</MenuItem>
+                        ))}
+                    </SubMenu>
                 )) : ''}
             </Box>
         </Box>
