@@ -6,30 +6,39 @@ import { CardBasketJson } from '../../JsonList/CardBasketJson'
 
 import { Layout, SideBarBasket, CardBasket } from '../../components'
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
     titleBox: {
         display: 'flex',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
+    content: {
+        width: '90%',
+        [theme.breakpoints.down('sm')]: {
+            width: '100%',
+            marginBottom: 20
+        },
+    }
 }))
 
 const Basket = () => {
     const classes = useStyles()
     return (
         <Layout>
-            <Grid container className={classes.content}>
-                <Grid item lg={9} md={9} sm={12} xs={12} xl={9}>
-                    <Box className={classes.titleBox}>
-                        <Typography variant="h6">Корзина</Typography>
-                        <MenuItem>Очистить корзину</MenuItem>
-                    </Box>
-                    <Box>
-                        {CardBasketJson.map((item, index) => (
-                            <CardBasket key={index} {...item} />
-                        ))}
+            <Grid container >
+                <Grid item lg={9} md={8} sm={12} xs={12} xl={9}>
+                    <Box className={classes.content}>
+                        <Box className={classes.titleBox}>
+                            <Typography variant="h6">Корзина</Typography>
+                            <MenuItem>Очистить корзину</MenuItem>
+                        </Box>
+                        <Box>
+                            {CardBasketJson.map((item, index) => (
+                                <CardBasket key={index} {...item} />
+                            ))}
+                        </Box>
                     </Box>
                 </Grid>
-                <Grid item lg={3} md={3} sm={12} xs={12} xl={3}>
+                <Grid item lg={3} md={4} sm={12} xs={12} xl={3} >
                     <SideBarBasket />
                 </Grid>
             </Grid>
