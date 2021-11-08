@@ -10,16 +10,16 @@ const CaruselService = () => {
     const [slidesToShow, setSlidesToShow] = useState()
     const settings = {
         dots: false,
-        centerMode: true,
         centerPadding: "0px",
         infinite: true,
         speed: 500,
-        slidesToShow,
         slidesToScroll: 1,
+        slidesToShow: 1,
+        variableWidth: true
     };
     React.useEffect(() => {
         function handleResize() {
-            if (window.innerWidth < 960 && window.innerWidth >= 600) {
+            if (window.innerWidth < 1290 && window.innerWidth >= 600) {
                 setSlidesToShow(2)
             }
             else if (window.innerWidth < 600) {

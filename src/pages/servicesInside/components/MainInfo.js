@@ -4,9 +4,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Box, MenuItem, Typography } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
-    container: {
-        marginTop: 20,
-    },
     tegItem: {
         width: 'max-content',
         padding: 5,
