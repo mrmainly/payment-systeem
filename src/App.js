@@ -15,6 +15,7 @@ import Basket from './pages/profile/basket'
 import PhoneMailProfile from "./pages/profile/phoneMailProfile";
 import FormProfile from "./pages/profile/formProfile";
 import ChangePassword from "./pages/profile/changePassword";
+import ServiceHistory from "./pages/profile/serviceHistory"
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/payment-sistem" component={PaymentSistem} />
         <Route path="/tech-support" component={TechSup} />
         <Route path="/basket" component={Basket} />
+        <Route path="/service-history" component={ServiceHistory} />
       </Switch>
     </Router>
   );

@@ -30,10 +30,12 @@ const useStyles = makeStyles((theme) => ({
     },
     priceBlock: {
         display: 'flex',
+        flexDirection: 'column'
     },
     actionBlock: {
         display: 'flex',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        marginTop: 10
     }
 }));
 
@@ -56,13 +58,11 @@ export default function CardBasket(props) {
                         <Typography variant="h6">{props.title}</Typography>
                     </Box>
                     <Box className={classes.priceBlock}>
-                        <Typography>Цена услуги:</Typography>&nbsp;
-                        <Typography style={{ fontWeight: 'bold' }}>{props.price} ₽</Typography>
-                        <Typography>Дата и время:</Typography>&nbsp;
-                        <Typography style={{ fontWeight: 'bold' }}>{props.price} ₽</Typography>
+                        <Typography>Дата и время: <span style={{ fontWeight: 'bold' }}>{props.date}</span></Typography>
+                        <Typography style={{ marginTop: 10 }}>Цена услуги: <span style={{ fontWeight: 'bold' }}>{props.price} ₽</span></Typography>
                     </Box>
                     <Box className={classes.actionBlock}>
-                        <Button variant="contained" style={{ backgroundColor: '#46B944', color: 'white' }}>В корзину</Button>
+                        <Button variant="contained" style={{ backgroundColor: '#46B944', color: 'white' }}>Изменить дату и время</Button>
                     </Box>
                 </Grid>
             </Grid>

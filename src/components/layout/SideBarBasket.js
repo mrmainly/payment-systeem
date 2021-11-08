@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         flexDirection: 'column',
-        padding: '10px 30px 10px 30px'
+        padding: '10px 30px 10px 30px',
     }
 }))
 
@@ -28,10 +28,10 @@ const SideBarBasket = () => {
             <Typography variant="h6">Оформление заказа</Typography>
             <Form>
                 <Input {...register('mail')} id="secondName" type="text" label="Фамилия" />
-                <Input {...register('mail')} id="secondName" type="text" label="Фамилия" />
-                <Input {...register('mail')} id="secondName" type="text" label="Фамилия" />
-                <Input {...register('mail')} id="secondName" type="text" label="Фамилия" />
-                <Input {...register('mail')} id="secondName" type="text" label="Фамилия" />
+                <Input {...register('mail')} id="secondName" type="text" label="Имя" />
+                <Input {...register('mail')} id="secondName" type="text" label="Отчество" />
+                <Input {...register('mail')} id="secondName" type="text" label="Телефон заказчика" />
+                <Input {...register('mail')} id="secondName" type="text" label="Электронная почта" />
                 <Box style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 10, marginBottom: 10 }}>
                     <Typography variant="h6">Общая сумма:</Typography>
                     <Typography variant="h6" style={{ marginLeft: 10 }}>9500 ₽</Typography>

@@ -11,6 +11,7 @@ import SideBar from './layout/SideBar'
 import SideBarBasket from './layout/SideBarBasket'
 import UserSideBar from './layout/UserSideBar'
 import ForgotModal from './modals/ForgotModal'
+import Table from './table'
 
 export {
     Button,
@@ -25,5 +26,6 @@ export {
     UserSideBar,
     SideBarBasket,
     SideBar,
-    ForgotModal
+    ForgotModal,
+    Table
 }
