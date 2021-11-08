@@ -62,7 +62,7 @@ const SideBar = () => {
                         <Typography variant="body1" >Сначала дешевые</Typography>
                     </MenuItem>
                     <MenuItem className={classes.menuItemText}>
-                        <Typography variant="body1">Сначала дешевые</Typography>
+                        <Typography variant="body1">Сначала дорогие</Typography>
                     </MenuItem>
                 </Box>
             </Box>

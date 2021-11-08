@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 
 export default function TableTransaction(TableData) {
     const classes = useStyles();
-    const headerValue = ['№ анкеты', 'Дата', 'Сумма', 'Детали', 'Баланс']
+    const headerValue = ['Дата оформления', 'Услуга', 'Дата услуги', 'Цена']
     return (
         <TableContainer component={Paper}>
             <Table className={classes.table} size="small" aria-label="a dense table">
