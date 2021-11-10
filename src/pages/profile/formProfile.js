@@ -57,9 +57,9 @@ const FormProfile = () => {
                     <FormControl component="fieldset">
                         <FormLabel component="legend">Пол</FormLabel>
                         <Controller
-                            rules={{ required: true }}
+                            {...register('gender')}
                             defaultValue="муж"
-                            name="promoting2"
+                            name="gender"
                             control={control}
                             render={({ field }) => (
                                 <RadioGroup {...field}>
@@ -71,7 +71,7 @@ const FormProfile = () => {
                                     <FormControlLabel
                                         value="жен"
                                         control={<Radio />}
-                                        label="муж"
+                                        label="жен"
                                     />
                                 </RadioGroup>
                             )}
