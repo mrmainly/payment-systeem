@@ -1,6 +1,6 @@
 import React from 'react'
-import { useForm } from 'react-hook-form'
-import { Box } from '@material-ui/core'
+import { useForm, Controller } from 'react-hook-form'
+import { Box, TextField, RadioGroup, FormControlLabel, Radio, FormControl, FormLabel } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useHistory } from 'react-router-dom'
@@ -8,7 +8,6 @@ import * as yup from 'yup'
 
 import { Layout, Form, Input, Button } from '../../components'
 import Cookies from 'js-cookie'
-import { RadioButtonUncheckedRounded } from '@material-ui/icons'
 
 const useStyles = makeStyles((theme) => ({
     inputBox: {
@@ -35,9 +34,9 @@ const schema = yup.object().shape({
 const FormProfile = () => {
     const history = useHistory()
     const classes = useStyles()
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { errors }, control } = useForm({
         mode: "onBlur",
-        resolver: yupResolver(schema)
+        resolver: yupResolver(schema),
     })
     const onSubmit = (data) => {
         console.log('asdasd', data)
@@ -49,7 +48,38 @@ const FormProfile = () => {
                     <Input {...register('secondName')} id="secondName" type="text" label="Фамилия" error={!!errors.secondName} helperText={errors?.secondName?.message} />
                     <Input {...register('firstName')} id="firstName" type="text" label="Имя" error={!!errors.firstName} helperText={errors?.firstName?.message} />
                     <Input {...register('patronymic')} id="patronymic" type="text" label="Отчество" error={!!errors.patronymic} helperText={errors?.patronymic?.message} />
-                    <Input {...register('phone')} id="secondName" type="number" label="Ваш номер телефона" />
+                    <TextField id={"outlined-basic"} label={"Дата рождения"} type={"date"} required fullWidth defaultValue={"2020-02-20"} variant={"outlined"}
+                        margin="normal"
+                        {...register('birth_date')}
+                        id="birth_date"
+                        error={!!errors.birth_date}
+                    />
+                    <FormControl component="fieldset">
+                        <FormLabel component="legend">Пол</FormLabel>
+                        <Controller
+                            rules={{ required: true }}
+                            defaultValue="муж"
+                            name="promoting2"
+                            control={control}
+                            render={({ field }) => (
+                                <RadioGroup {...field}>
+                                    <FormControlLabel
+                                        value="муж"
+                                        control={<Radio />}
+                                        label="муж"
+                                    />
+                                    <FormControlLabel
+                                        value="жен"
+                                        control={<Radio />}
+                                        label="муж"
+                                    />
+                                </RadioGroup>
+                            )}
+                        />
+                    </FormControl>
+                    <Input {...register('phone')} id="phone" type="number" label="Ваш номер телефона" />
+
+                    <Input {...register('mail')} id="secondName" type="text" label="Электронная почта" />
                 </Box>
                 <Box style={{ marginTop: 20 }}>
                     <Button>Сохранить</Button>
