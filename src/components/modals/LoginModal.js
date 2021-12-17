@@ -50,8 +50,8 @@ const LoginModal = () => {
                 <Typography variant="body1" style={{ fontWeight: 'bold' }}>Вход</Typography>
                 <Typography variant="body1">Платные услуги РБ1</Typography>
                 <Form onSubmit={handleSubmit(onSubmit)}>
-                    <Input {...register('mail')} id="secondName" type="text" label="Электронная почта" />
-                    <Input {...register('password')} id="firstName" type="password" label="Пароль" />
+                    <Input {...register('mail')} id="mail" type="text" label="Электронная почта" />
+                    <Input {...register('password')} id="password" type="password" label="Пароль" />
                     <Box style={{ marginTop: 10, marginBottom: 10 }}>
                         <Button>Далее</Button>
                     </Box>

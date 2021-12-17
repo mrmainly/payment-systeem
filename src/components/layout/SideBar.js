@@ -102,7 +102,7 @@ const SideBar = () => {
                     {SideBarData ? SideBarData.map((item, index) => (
                         <SubMenu
                             className={classes.subMenuStyle}
-                            title={<div className={classes.subMenuTitle}>{item.title}</div>}
+                            title={<div className={classes.subMenuTitle}><img src={item.icon} style={{ marginRight: 10, height: 20 }} />{item.title}</div>}
                             key={index}
                         >
                             {item.menuItems.map((item, index) => (

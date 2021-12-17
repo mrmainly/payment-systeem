@@ -1,7 +1,42 @@
 
 const SideBarData = [
     {
+        title: 'Все услуги',
+        icon: '/img/v5.png',
+        menuItems: [
+            {
+                label: 'МРТ внутренних органов',
+                link: '/foq'
+            },
+            {
+                label: 'МРТ головы',
+                link: '/foq'
+            },
+            {
+                label: 'МРТ мягких тканей',
+                link: '/foq'
+            },
+            {
+                label: 'МРТ позвоночника',
+                link: '/foq'
+            },
+            {
+                label: 'МРТ суставов',
+                link: '/foq'
+            },
+            {
+                label: 'МРТ с контрастом',
+                link: '/foq'
+            },
+            {
+                label: 'Дополнительные услуги',
+                link: '/foq'
+            }
+        ]
+    },
+    {
         title: 'МРТ',
+        icon: '/img/Ve.png',
         menuItems: [
             {
                 label: 'МРТ внутренних органов',
@@ -35,6 +70,7 @@ const SideBarData = [
     },
     {
         title: 'КТ',
+        icon: '/img/v92.png',
         menuItems: [
             {
                 label: 'Ангиографияч',
@@ -72,6 +108,7 @@ const SideBarData = [
     },
     {
         title: 'Рентген',
+        icon: '/img/f.png',
         menuItems: [
             {
                 label: 'Рентген головы',
@@ -93,6 +130,7 @@ const SideBarData = [
     },
     {
         title: 'Маммография',
+        icon: '/img/v7.png',
         menuItems: [
             {
                 label: 'Рентген головы',
@@ -113,7 +151,18 @@ const SideBarData = [
         ]
     },
     {
+        title: 'ЭКГ',
+        icon: '/img/v3.png',
+        menuItems: [
+            {
+                label: 'УЗИ при беременности',
+                link: '/asd'
+            },
+        ]
+    },
+    {
         title: 'Кольпоскопия',
+        icon: '/img/v1.png',
         menuItems: [
             {
                 label: 'Рентген головы',
@@ -135,6 +184,7 @@ const SideBarData = [
     },
     {
         title: 'УЗИ',
+        icon: '/img/v4.png',
         menuItems: [
             {
                 label: 'УЗИ при беременности',
@@ -180,6 +230,7 @@ const SideBarData = [
     },
     {
         title: 'Эхокардиография',
+        icon: '/img/v3.png',
         menuItems: [
             {
                 label: 'УЗИ при беременности',
@@ -189,6 +240,7 @@ const SideBarData = [
     },
     {
         title: 'Инъекции',
+        icon: '/img/sh.png',
         menuItems: [
             {
                 label: 'УЗИ при беременности',
@@ -198,6 +250,7 @@ const SideBarData = [
     },
     {
         title: 'Прочие услуги',
+        icon: '/img/v5.png',
         menuItems: [
             {
                 label: 'УЗИ при беременности',
