@@ -11,13 +11,15 @@ import {
     Typography,
     InputBase,
     fade,
-    Badge
+    FormGroup,
+    Button
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom'
 import cookie from 'js-cookie'
 import SearchIcon from '@material-ui/icons/Search';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 import themeMain from '../../theme'
 import { DispatchContext, StateContext } from "../../store";
@@ -151,43 +153,46 @@ const useStyles = makeStyles((theme) => ({
         width: 300,
     },
     search: {
-        position: 'relative',
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: fade(theme.palette.common.white, 0.15),
-        '&:hover': {
-            backgroundColor: fade(theme.palette.common.white, 0.25),
+        marginLeft: 25,
+        [theme.breakpoints.down('md')]: {
+            margin: 0,
         },
-        marginRight: theme.spacing(2),
-        marginLeft: 0,
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(3),
-            width: 'auto',
-        },
-    },
-    searchIcon: {
-        padding: theme.spacing(0, 2),
-        height: '100%',
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
     },
     inputRoot: {
-        color: 'inherit',
-        width: 325
-    },
-    inputInput: {
-        padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('md')]: {
-            width: '20ch',
+        width: 285,
+        backgroundColor: 'white',
+        paddingLeft: 10,
+        height: 35,
+        borderTopLeftRadius: 4,
+        borderEndStartRadius: 4,
+        [theme.breakpoints.down('xs')]: {
+            height: 30,
+            width: 170,
         },
     },
+    btn_search: {
+        backgroundColor: '#459AE8',
+    },
+    logoBlock: {
+        display: 'flex',
+        flexDirection: 'row',
+        width: 220,
+        alignItems: 'center',
+        [theme.breakpoints.down('xs')]: {
+            display: 'none'
+        },
+    },
+    logoBlockDrawer: {
+        display: 'none',
+        [theme.breakpoints.down('xs')]: {
+            display: 'flex',
+            flexDirection: 'row',
+            width: 220,
+            alignItems: 'center',
+            marginTop: 10,
+            marginBottom: 20
+        },
+    }
 }));
 
 export default function Header() {
@@ -200,6 +205,7 @@ export default function Header() {
         mobileView: false,
         drawerOpen: false,
     });
+    const [search, setSearch] = useState(false)
 
     const { mobileView, drawerOpen } = state;
 
@@ -275,19 +281,10 @@ export default function Header() {
                                     </Link>
                                 ))}
                                 <Box style={{ marginLeft: 20, marginTop: 3 }}>
-                                    <div className={classes.search}>
-                                        <div className={classes.searchIcon}>
-                                            <SearchIcon />
-                                        </div>
-                                        <InputBase
-                                            placeholder="Поиск"
-                                            classes={{
-                                                root: classes.inputRoot,
-                                                input: classes.inputInput,
-                                            }}
-                                            inputProps={{ 'aria-label': 'search' }}
-                                        />
-                                    </div>
+                                    <FormGroup className={classes.search} row>
+                                        <InputBase variant="outlined" className={classes.inputRoot} placeholder="Поиск" />
+                                        <Button className={classes.btn_search}><img src="/img/search.png" /></Button>
+                                    </FormGroup>
                                 </Box>
                             </Box>
                             <Box style={{ display: 'flex' }}>
@@ -327,29 +324,36 @@ export default function Header() {
             setState((prevState) => ({ ...prevState, drawerOpen: true }));
         const handleDrawerClose = () =>
             setState((prevState) => ({ ...prevState, drawerOpen: false }));
-
         return (
             <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Box style={{ display: 'flex' }}>
-                    <IconButton
-                        {...{
-                            edge: "start",
-                            "aria-label": "menu",
-                            "aria-haspopup": "true",
-                            onClick: handleDrawerOpen,
-                        }}
-                        style={{ color: 'white', marginRight: 10 }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Box style={{ display: 'flex', flexDirection: 'row', width: 220, alignItems: 'center' }}>
-                        <img src={'img/292.png'} />
-                        <Typography variant="h6" style={{ marginLeft: 10 }}>Платные услуги</Typography>
+                {search ? '' :
+                    <Box style={{ display: 'flex' }}>
+                        <IconButton
+                            {...{
+                                edge: "start",
+                                "aria-label": "menu",
+                                "aria-haspopup": "true",
+                                onClick: handleDrawerOpen,
+                            }}
+                            style={{ color: 'white' }}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <Box className={classes.logoBlock}>
+                            <img src={'img/292.png'} />
+                            <Typography variant="h6" style={{ marginLeft: 10 }}>Платные услуги</Typography>
+                        </Box>
                     </Box>
-                </Box>
-                <Box style={{ display: 'flex' }}>
-                    <img src={'img/Vec.png'} className={classes.img} style={{ marginRight: 20 }} />
-                    <img src={'img/Vect.png'} className={classes.img} />
+                }
+                <Box style={search ? { display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' } : { display: 'flex', alignItems: 'center' }}>
+                    {search &&
+                        <FormGroup className={classes.search} row>
+                            <InputBase variant="outlined" className={classes.inputRoot} placeholder="Поиск" />
+                            <Button className={classes.btn_search}><img src="/img/search.png" /></Button>
+                        </FormGroup>
+                    }
+                    <IconButton onClick={() => setSearch(!search)}>{search ? <HighlightOffIcon style={{ color: 'white' }} /> : <SearchIcon style={{ color: 'white' }} />}</IconButton>
+                    {search ? '' : <IconButton onClick={() => router.push('/basket')}><img src="/img/Vect.png" /></IconButton>}
                 </Box>
                 <Drawer
                     {...{
@@ -360,13 +364,17 @@ export default function Header() {
                 >
                     <div className={classes.drawerContainer} >{getDrawerChoices()}</div>
                 </Drawer>
-            </Toolbar>
+            </Toolbar >
         );
     };
 
     const getDrawerChoices = () => {
         return (
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+                <Box className={classes.logoBlockDrawer}>
+                    <img src={'img/292.png'} />
+                    <Typography variant="h6" style={{ marginLeft: 10 }}>Платные услуги</Typography>
+                </Box>
                 {headersData.map((item, index) => (
                     <MenuItem key={index} className={classes.login} style={{ borderRight: `${item.showLine ? '2px solid white' : '0px solid white'}` }}>
                         <Link to={item.link} className={classes.link_Style}>

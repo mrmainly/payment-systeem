@@ -78,7 +78,6 @@ const FormProfile = () => {
                         />
                     </FormControl>
                     <Input {...register('phone')} id="phone" type="number" label="Ваш номер телефона" />
-
                     <Input {...register('mail')} id="secondName" type="text" label="Электронная почта" />
                 </Box>
                 <Box style={{ marginTop: 20 }}>

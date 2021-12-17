@@ -51,7 +51,7 @@ const LoginModal = () => {
                 <Typography variant="body1">Платные услуги РБ1</Typography>
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <Input {...register('mail')} id="secondName" type="text" label="Электронная почта" />
-                    <Input {...register('password')} id="firstName" type="text" label="Пароль" />
+                    <Input {...register('password')} id="firstName" type="password" label="Пароль" />
                     <Box style={{ marginTop: 10, marginBottom: 10 }}>
                         <Button>Далее</Button>
                     </Box>
